@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.myspring.demo.mapper.UserMapper">
+
+    <resultMap id="userMap" type="com.myspring.demo.entity.User">
+        <id column="id" property="id"></id>
+        <id column="username" property="username"></id>
+        <id column="avatar" property="avatar"></id>
+        <id column="email" property="email"></id>
+        <id column="password" property="password"></id>
+        <id column="status" property="status"></id>
+        <id column="created" property="created"></id>
+        <id column="last_login" property="last_login"></id>
+
+    </resultMap>
+    <select id="getById"  parameterType="int" resultType="com.myspring.demo.entity.User">
+        SELECT * FROM m_user where id = #{id}
+    </select>
+
+</mapper>

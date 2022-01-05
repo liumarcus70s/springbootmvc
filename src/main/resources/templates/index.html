@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="https://apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js"></script>
+</head>
+<body>
+<div id="ces" style="padding: 5px">
+    demo
+</div>
+
+<script >
+    $.ajax({url:"/getInfo",success:function(result){
+            for (var item in result) {
+                console.log(item)
+                $("#ces").append('<p>id:'+result[item].id+'</p>');
+                $("#ces").append('<p>姓名:'+result[item].name+'</p>');
+                $("#ces").append('<p>地址:'+result[item].address+'</p>');
+                $("#ces").append('<p>生日:'+result[item].birth+'</p><hr/>');
+            }
+        }});
+
+</script>
+
+</body>
+</html>
