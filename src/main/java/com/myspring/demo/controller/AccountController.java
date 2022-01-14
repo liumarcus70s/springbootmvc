@@ -9,6 +9,7 @@ import com.myspring.demo.common.lang.Result;
 import com.myspring.demo.entity.User;
 import com.myspring.demo.service.UserService;
 import com.myspring.demo.util.JwtUtils;
+import com.myspring.demo.util.ShiroUtil;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.shiro.SecurityUtils;
 import org.apache.shiro.authz.annotation.RequiresAuthentication;
@@ -58,12 +59,13 @@ public class AccountController {
     @RequiresAuthentication
     @GetMapping("/logout")
     public Result logout() {
+        Long userId = ShiroUtil.getProfile().getId().longValue();
         //退出登录
-        log.warn("x");
+        //log.warn(String.valueOf(userId));
         SecurityUtils.getSubject().logout();
         //SecurityUtils.getSubject();
         log.warn("y");
-        return Result.succ("注销成功");
+        return Result.succ("注销成功,ID="+String.valueOf(userId));
     }
 
 
